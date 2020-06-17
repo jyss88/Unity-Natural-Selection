@@ -8,9 +8,12 @@ public class CreatureBehaviour : MonoBehaviour
     [SerializeField] private CreatureSettings settings;
     [SerializeField] AbilitySettings velocitySettings;
 #pragma warning restore 0649
+    private ICreatureMetabolism metabolism;
     private ICreatureMovement movement;
+
     private void Awake() {
-        movement = new CreatureMovement(settings.Velocity, transform, velocitySettings);
+        metabolism = new CreatureMetabolism(gameObject, settings.StartingEnergy);
+        movement = new CreatureMovement(settings.Velocity, transform, velocitySettings, metabolism);
     }
     // Start is called before the first frame update
     void Start()
@@ -22,5 +25,6 @@ public class CreatureBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         movement.Tick();
+        metabolism.Tick();
     }
 }

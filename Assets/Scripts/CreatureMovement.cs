@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class CreatureMovement : ICreatureMovement
 {
-    private float velocity;
+    public float Velocity { get; private set; }
     private Transform transform;
+    private ICreatureMetabolism metabolism;
     private AbilitySettings settings;
-    private float minX, maxX, minY, maxY;
     private Vector2 moveSpot;
     private float timeSinceChanged = 0;
 
-    public CreatureMovement(float velocity, Transform transform, AbilitySettings settings) {
-        this.velocity = velocity;
+    public CreatureMovement(float velocity, Transform transform, AbilitySettings settings, ICreatureMetabolism metabolism) {
+        Velocity = velocity;
         this.transform = transform;
         this.settings = settings;
+        this.metabolism = metabolism;
 
         moveSpot = CreateMoveSpot();
-
-        minX = ScreenBounds.Instance.MinX;
-        maxX = ScreenBounds.Instance.MaxX;
     }
 
     public void Tick() {
         Move();
+        metabolism.DecreaseEnergy(settings.Multiplier * Mathf.Pow(Velocity, settings.Exponent * Time.deltaTime));
     }
 
     /// <summary>
@@ -42,7 +41,7 @@ public class CreatureMovement : ICreatureMovement
         float minDist = 0.2f;
 
         // Move towards move spot
-        transform.position = Vector2.MoveTowards(transform.position, moveSpot, velocity * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveSpot, Velocity * Time.deltaTime);
         timeSinceChanged += Time.deltaTime;
 
         // If reached move spot, create new movespot
