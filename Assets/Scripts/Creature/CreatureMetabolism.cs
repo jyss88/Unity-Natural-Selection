@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CreatureMetabolism : ICreatureMetabolism
 {
@@ -28,9 +26,5 @@ public class CreatureMetabolism : ICreatureMetabolism
 
     public void DecreaseEnergy(float energy) {
         Energy -= energy;
-    }
-
-    public bool IsEmpty() {
-        return Energy <= 0;
     }
 }

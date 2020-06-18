@@ -1,15 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CreatureBehaviour : MonoBehaviour
 {
 #pragma warning disable 0649
     [SerializeField] private CreatureSettings settings;
-    [SerializeField] AbilitySettings velocitySettings;
+    [SerializeField] private AbilitySettings velocitySettings;
 #pragma warning restore 0649
     private ICreatureMetabolism metabolism;
     private ICreatureMovement movement;
+
+    public float Energy { 
+        get { 
+            try {
+                return metabolism.Energy;
+            } catch {
+                return 0.0f;
+            }
+        } 
+    }
 
     private void Awake() {
         metabolism = new CreatureMetabolism(gameObject, settings.StartingEnergy);
@@ -26,5 +34,9 @@ public class CreatureBehaviour : MonoBehaviour
     {
         movement.Tick();
         metabolism.Tick();
+    }
+
+    public void Eat(float energy) {
+        metabolism.AddEnergy(energy);
     }
 }

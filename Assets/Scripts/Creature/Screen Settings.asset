@@ -7,10 +7,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9898063d42c2546b50c3804ad2d5ce, type: 3}
-  m_Name: Default Creature
+  m_Script: {fileID: 11500000, guid: f84ed4d65e4bcc740bacc1a7c5d5b886, type: 3}
+  m_Name: Screen Settings
   m_EditorClassIdentifier: 
-  velocity: 10
-  startingEnergy: 1000
+  topOffset: 0
+  bottomOffset: 0
+  rightOffset: 0
+  leftOffset: 0
