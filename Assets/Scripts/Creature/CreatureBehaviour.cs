@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CreatureBehaviour : MonoBehaviour
+public class CreatureBehaviour : MonoBehaviour, IEater
 {
 #pragma warning disable 0649
     [SerializeField] private CreatureSettings settings;

@@ -5,7 +5,7 @@ public class FoodBehaviour : MonoBehaviour, IEdible
     [SerializeField] private FoodSettings settings;
     public float Nutrition { get; private set; }
 
-    public void FeedTo(CreatureBehaviour creature) {
+    public void FeedTo(IEater creature) {
         creature.Eat(Nutrition);
         Destroy(gameObject);
     }
@@ -14,22 +14,10 @@ public class FoodBehaviour : MonoBehaviour, IEdible
         Nutrition = settings.Nutrition;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Creature")){
             Debug.Log("Collided with creature");
-            FeedTo(collision.gameObject.GetComponent<CreatureBehaviour>());
+            FeedTo(collision.gameObject.GetComponent<IEater>());
         }
     }
 }

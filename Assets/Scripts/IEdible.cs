@@ -2,5 +2,5 @@
 {
     float Nutrition { get; }
 
-    void FeedTo(CreatureBehaviour creature);
+    void FeedTo(IEater creature);
 }
