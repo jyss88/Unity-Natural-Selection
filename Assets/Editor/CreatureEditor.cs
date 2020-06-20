@@ -1,4 +1,6 @@
 ﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.XR;
 
 [CustomEditor (typeof(CreatureBehaviour))]
 public class CreatureEditor : Editor
@@ -14,5 +16,16 @@ public class CreatureEditor : Editor
 
         EditorGUILayout.LabelField("Energy");
         EditorGUILayout.FloatField(creature.Energy);
+
+        EditorGUILayout.LabelField("Velocity");
+        EditorGUILayout.FloatField(creature.Velocity);
+
+        EditorGUILayout.LabelField("Sense Radius");
+        EditorGUILayout.FloatField(creature.SenseRadius);
+    }
+
+    private void OnSceneGUI() {
+        Handles.color = Color.red;
+        Handles.DrawWireArc(creature.transform.position, Vector3.forward, Vector3.right, 360, creature.SenseRadius);
     }
 }

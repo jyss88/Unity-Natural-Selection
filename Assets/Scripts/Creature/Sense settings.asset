@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5a50eb9a8eb96429a419ac6ee3fe7d, type: 3}
   m_Name: Sense settings
   m_EditorClassIdentifier: 
-  multiplier: 0
-  exponent: 0
+  multiplier: 0.1
+  exponent: 1

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CreatureBehaviour : MonoBehaviour, IEater
 {
@@ -8,6 +7,7 @@ public class CreatureBehaviour : MonoBehaviour, IEater
     [SerializeField] private AbilitySettings velocitySettings;
     [SerializeField] private AbilitySettings senseSettings;
 #pragma warning restore 0649
+
     private ICreatureState state;
     private ICreatureMetabolism metabolism;
     private ICreatureMovement movement;
