@@ -6,16 +6,20 @@ public class CreatureMovement : ICreatureMovement
 {
     public float Velocity { get; private set; }
     private Transform transform;
+    private ICreatureState state;
     private ICreatureMetabolism metabolism;
+    private ICreatureSense sense;
     private AbilitySettings settings;
     private Vector2 moveSpot;
     private float timeSinceChanged = 0;
 
-    public CreatureMovement(AbilitySettings settings, float velocity, ICreatureMetabolism metabolism, Transform transform) {
+    public CreatureMovement(AbilitySettings settings, float velocity, ICreatureState state, ICreatureMetabolism metabolism, ICreatureSense sense, Transform transform) {
         Velocity = velocity;
+        this.state = state;
         this.transform = transform;
         this.settings = settings;
         this.metabolism = metabolism;
+        this.sense = sense;
 
         moveSpot = CreateMoveSpot();
     }
@@ -34,7 +38,17 @@ public class CreatureMovement : ICreatureMovement
     }
 
     private void Move() {
-        MoveRandomly();
+        switch (state.State) {
+            case CState.wander:
+                MoveRandomly();
+                break;
+            case CState.hunt:
+                MoveToTarget(sense.Target);
+                break;
+            default:
+                MoveRandomly();
+                break;
+        }
     }
 
     private void MoveRandomly() {
@@ -48,6 +62,14 @@ public class CreatureMovement : ICreatureMovement
         if (Vector2.Distance(transform.position, moveSpot) < minDist || timeSinceChanged > 10) {
             moveSpot = CreateMoveSpot();
             timeSinceChanged = 0;
+        }
+    }
+
+    private void MoveToTarget(Collider2D target) {
+        if (target) {
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, Velocity * Time.deltaTime);
+        } else {
+            MoveRandomly();
         }
     }
 }

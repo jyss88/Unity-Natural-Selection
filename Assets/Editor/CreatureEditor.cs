@@ -27,5 +27,10 @@ public class CreatureEditor : Editor
     private void OnSceneGUI() {
         Handles.color = Color.red;
         Handles.DrawWireArc(creature.transform.position, Vector3.forward, Vector3.right, 360, creature.SenseRadius);
+
+        if (creature.Target) {
+            Handles.color = Color.blue;
+            Handles.DrawWireArc(creature.Target.transform.position, Vector3.forward, Vector3.right, 360, 0.75f);
+        }
     }
 }
