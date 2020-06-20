@@ -11,7 +11,7 @@ public class CreatureMovement : ICreatureMovement
     private Vector2 moveSpot;
     private float timeSinceChanged = 0;
 
-    public CreatureMovement(float velocity, Transform transform, AbilitySettings settings, ICreatureMetabolism metabolism) {
+    public CreatureMovement(AbilitySettings settings, float velocity, ICreatureMetabolism metabolism, Transform transform) {
         Velocity = velocity;
         this.transform = transform;
         this.settings = settings;

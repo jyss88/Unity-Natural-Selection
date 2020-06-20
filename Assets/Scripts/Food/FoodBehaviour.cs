@@ -2,7 +2,9 @@
 
 public class FoodBehaviour : MonoBehaviour, IEdible
 {
+#pragma warning disable 0649
     [SerializeField] private FoodSettings settings;
+#pragma warning restore 0649
     public float Nutrition { get; private set; }
 
     public void FeedTo(IEater creature) {
