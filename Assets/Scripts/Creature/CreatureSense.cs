@@ -22,24 +22,12 @@ public class CreatureSense : ICreatureSense
     }
 
     private void FindVisibleFood() {
-        Collider2D[] targets;
-        float thresh = 0.1f;
+        if (state.State == CState.wander) {
+            Target = Physics2D.OverlapCircle(transform.position, Radius, LayerMask.GetMask("Food"));
 
-        targets = Physics2D.OverlapCircleAll(transform.position, Radius);
-
-        foreach(Collider2D collider in targets) {
-            if (Vector2.Distance(transform.position, collider.transform.position) > thresh) {
-                Target = collider;
-                break;
+            if (Target) {
+                state.State = CState.hunt;
             }
-            Target = null;
-        }
-
-        if (Target) {
-            Debug.Log("Target found");
-            state.State = CState.hunt;
-        } else {
-            state.State = CState.wander;
         }
     }
 }

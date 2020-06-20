@@ -69,6 +69,7 @@ public class CreatureMovement : ICreatureMovement
         if (target) {
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, Velocity * Time.deltaTime);
         } else {
+            state.State = CState.wander;
             MoveRandomly();
         }
     }
