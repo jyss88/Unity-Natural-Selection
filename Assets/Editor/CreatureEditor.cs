@@ -17,6 +17,9 @@ public class CreatureEditor : Editor
         EditorGUILayout.LabelField("Energy");
         EditorGUILayout.FloatField(creature.Energy);
 
+        EditorGUILayout.LabelField("Size");
+        EditorGUILayout.FloatField(creature.Size);
+
         EditorGUILayout.LabelField("Velocity");
         EditorGUILayout.FloatField(creature.Velocity);
 
