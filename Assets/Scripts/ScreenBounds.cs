@@ -21,7 +21,7 @@ public class ScreenBounds : SingletonScriptableObject<ScreenBounds>
     public float Height { get; private set; }
 
     private void Awake() {
-        UpdateBounds();
+        //UpdateBounds();
     }
 
     public void UpdateBounds() {

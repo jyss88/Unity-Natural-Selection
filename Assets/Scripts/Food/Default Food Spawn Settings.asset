@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5a50eb9a8eb96429a419ac6ee3fe7d, type: 3}
-  m_Name: Velocity Settings
+  m_Script: {fileID: 11500000, guid: cd41377e54d0fca48a14a5f7a7408bc4, type: 3}
+  m_Name: Default Food Spawn Settings
   m_EditorClassIdentifier: 
-  multiplier: 0.5
-  exponent: 2
+  numSpawn: 10
+  spawnRate: 1

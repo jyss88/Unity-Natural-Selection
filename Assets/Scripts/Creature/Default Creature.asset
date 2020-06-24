@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9898063d42c2546b50c3804ad2d5ce, type: 3}
   m_Name: Default Creature
   m_EditorClassIdentifier: 
-  velocity: 10
+  velocity: 1
+  startingEnergy: 10
+  senseRadius: 2
