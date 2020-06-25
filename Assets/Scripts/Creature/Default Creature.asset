@@ -15,4 +15,4 @@ MonoBehaviour:
   velocity: 1
   startingEnergy: 10
   senseRadius: 2
-  size: 0.5
+  size: 1
