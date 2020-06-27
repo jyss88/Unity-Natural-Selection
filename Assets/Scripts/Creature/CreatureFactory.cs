@@ -3,24 +3,25 @@
 public class CreatureFactory : ICreatureFactory
 {
     private ICreatureMetabolism metabolism;
+    private ICreature source;
     private GameObject prefab;
     private Transform transform;
-    private float size, velocity, sightRadius;
-    private float deltaMutate;
+    private float size;
 
-    public CreatureFactory(GameObject prefab, ICreatureMetabolism metabolism, Transform transform, float size, float velocity, float sightRadius) {
+    public CreatureFactory(GameObject prefab, ICreature source, ICreatureMetabolism metabolism, Transform transform, float size) {
         this.prefab = prefab;
-
+        this.source = source;
         this.transform = transform;
         this.metabolism = metabolism;
         this.size = size;
-        this.velocity = velocity;
-        this.sightRadius = sightRadius;
     }
 
     public GameObject Reproduce() {
         Vector3 offsetVector = new Vector3(transform.localScale.x, transform.localScale.y);
-        return Object.Instantiate(prefab, transform.position + offsetVector, Quaternion.identity);
+        GameObject newCreature = Object.Instantiate(prefab, transform.position + offsetVector, Quaternion.identity);
+        newCreature.GetComponent<ICreature>().Mutate(source);
+
+        return newCreature;
     }
 
     public void Tick() {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CreatureBehaviour : MonoBehaviour, IEater
+public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
 {
 #pragma warning disable 0649
     [SerializeField] private CreatureSettings settings;
@@ -8,8 +8,6 @@ public class CreatureBehaviour : MonoBehaviour, IEater
     [SerializeField] private AbilitySettings senseSettings;
     [SerializeField] private AbilitySettings sizeSettings;
 #pragma warning restore 0649
-
-    private bool isSet = false;
 
     private ICreatureState state;
     private ICreatureMetabolism metabolism;
@@ -19,6 +17,7 @@ public class CreatureBehaviour : MonoBehaviour, IEater
     private ICreatureFactory creatureFactory;
 
     public float Energy { get { return metabolism.Energy;} }
+    public float StartingEnergy { get { return metabolism.StartingEnergy; } }
     public float Velocity { get { return movement.Velocity; } }
     public float SenseRadius { get { return sense.Radius; } }
     public float Size { get { return size.Size; } }
@@ -31,7 +30,7 @@ public class CreatureBehaviour : MonoBehaviour, IEater
         size = new CreatureSize(sizeSettings, settings.Size, metabolism, transform);
         sense = new CreatureSense(senseSettings, settings.SenseRadius, state, metabolism, transform);
         movement = new CreatureMovement(velocitySettings, settings.Velocity, state, metabolism, sense, transform);
-        creatureFactory = new CreatureFactory(gameObject, metabolism, transform, settings.Size, settings.Velocity, settings.SenseRadius);
+        creatureFactory = new CreatureFactory(gameObject, this, metabolism, transform, settings.Size);
     }
 
     // Update is called once per frame
@@ -48,19 +47,19 @@ public class CreatureBehaviour : MonoBehaviour, IEater
         metabolism.AddEnergy(energy);
     }
 
-    public void SetAttributes(float startingEnergy, float size, float velocity, float senseRadius) {
-        if (!isSet) {
-            state = new CreatureState();
-            metabolism = new CreatureMetabolism(gameObject, startingEnergy);
+    private float MutateAttribute(float attr) {
+        return Mathf.Abs(attr + Random.Range(-settings.DeltaMutate, settings.DeltaMutate));
+    }
 
-            this.size = new CreatureSize(sizeSettings, size, metabolism, transform);
-            sense = new CreatureSense(senseSettings, senseRadius, state, metabolism, transform);
-            movement = new CreatureMovement(velocitySettings, velocity, state, metabolism, sense, transform);
-            creatureFactory = new CreatureFactory(gameObject, metabolism, transform, size, velocity, senseRadius);
+    public void Mutate(ICreature source) {
+        float newStartingEnergy = MutateAttribute(source.StartingEnergy);
+        float newSize = Mathf.Clamp(MutateAttribute(source.Size), 0.1f, 1000f);
+        float newVelocity = MutateAttribute(source.Velocity);
+        float newSenseRadius = MutateAttribute(source.SenseRadius);
 
-            isSet = true;
-        } else {
-            Debug.Log("attributes have already been set.");
-        }
+        metabolism = new CreatureMetabolism(gameObject, newStartingEnergy);
+        size = new CreatureSize(sizeSettings, newSize, metabolism, transform);
+        movement = new CreatureMovement(velocitySettings, MutateAttribute(source.Velocity), state, metabolism, sense, transform);
+        creatureFactory = new CreatureFactory(gameObject, this, metabolism, transform, newSize);
     }
 }
