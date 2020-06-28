@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd41377e54d0fca48a14a5f7a7408bc4, type: 3}
   m_Name: Default Food Spawn Settings
   m_EditorClassIdentifier: 
-  numSpawn: 10
+  numSpawn: 20
   spawnRate: 1

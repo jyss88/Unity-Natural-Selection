@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538db1498d6f653478c65bc4c75bce3e, type: 3}
   m_Name: Default Food Settings
   m_EditorClassIdentifier: 
-  nutrition: 10
+  nutrition: 25
