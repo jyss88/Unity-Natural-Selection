@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd41377e54d0fca48a14a5f7a7408bc4, type: 3}
-  m_Name: Default Food Spawn Settings
+  m_Script: {fileID: 11500000, guid: 5e9898063d42c2546b50c3804ad2d5ce, type: 3}
+  m_Name: Default Creature
   m_EditorClassIdentifier: 
-  numSpawn: 20
-  spawnRate: 1
+  velocity: 2
+  startingEnergy: 50
+  senseRadius: 2
+  size: 1
+  deltaMutate: 0.1

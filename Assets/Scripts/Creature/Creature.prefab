@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd9755fa7720154787c3492137fba1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 533086199359493560}
   settings: {fileID: 11400000, guid: 8f5b20b13accdc74da399ef36aa2e58d, type: 2}
   velocitySettings: {fileID: 11400000, guid: 1593f91f905b11a4ab22b1807ad6573a, type: 2}
   senseSettings: {fileID: 11400000, guid: 11c8f6431fbbf604b94b0a5dd253f304, type: 2}
+  sizeSettings: {fileID: 11400000, guid: a72a04a27feef7040b995fff038903fe, type: 2}
 --- !u!61 &533086199359493541
 BoxCollider2D:
   m_ObjectHideFlags: 0
