@@ -59,7 +59,8 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
 
         metabolism = new CreatureMetabolism(gameObject, newStartingEnergy);
         size = new CreatureSize(sizeSettings, newSize, metabolism, transform);
-        movement = new CreatureMovement(velocitySettings, MutateAttribute(source.Velocity), state, metabolism, sense, transform);
+        sense = new CreatureSense(senseSettings, newSenseRadius, state, metabolism, transform);
+        movement = new CreatureMovement(velocitySettings, newVelocity, state, metabolism, sense, transform);
         creatureFactory = new CreatureFactory(gameObject, this, metabolism, transform, newSize);
     }
 }

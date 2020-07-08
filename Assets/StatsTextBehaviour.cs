@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +7,13 @@ public class StatsTextBehaviour : MonoBehaviour
 {
     [SerializeField] private CreatureStats.StatType statType;
 
-    Text statText;
+    private Text statText;
+
+    private void OnValidate()
+    {
+        statText = GetComponent<Text>();
+        statText.text = "Avg " + SplitString(statType.ToString()) + ": 0.00";
+    }
 
     private void Awake() {
         statText = GetComponent<Text>();
@@ -16,9 +22,7 @@ public class StatsTextBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string str = "Avg " + statType.ToString() + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
-
-        statText.text = str;
+        statText.text = "Avg " + SplitString(statType.ToString()) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
     }
 
     float GetAvg(List<Dictionary<CreatureStats.StatType, float>> creatureList) {
@@ -29,5 +33,10 @@ public class StatsTextBehaviour : MonoBehaviour
         }
 
         return total / creatureList.Count;
+    }
+
+    private string SplitString(string str)
+    {
+        return string.Join(" ", Regex.Split(str, @"(?<!^)(?=[A-Z](?![A-Z]|$))"));
     }
 }

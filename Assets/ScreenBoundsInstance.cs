@@ -7,4 +7,9 @@ public class ScreenBoundsInstance : MonoBehaviour
     private void OnValidate() {
         bounds.UpdateBounds();
     }
+
+    private void Awake()
+    {
+        bounds.UpdateBounds();
+    }
 }
