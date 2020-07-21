@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84ed4d65e4bcc740bacc1a7c5d5b886, type: 3}
   m_Name: Screen Settings
   m_EditorClassIdentifier: 
-  topOffset: 0
+  topOffset: 3
   bottomOffset: 0
   rightOffset: 0
   leftOffset: 0
