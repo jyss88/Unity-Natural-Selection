@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button playButton;
+    [SerializeField] private Text sliderText;
 
     private float playbackSpeed = 1f;
 
@@ -41,5 +42,13 @@ public class TimeManager : MonoBehaviour
         playButton.interactable = false;
 
         Debug.Log("Game resumed");
+    }
+
+    public void ChangeSpeed(float newSpeed)
+    {
+        playbackSpeed = newSpeed;
+        Time.timeScale = newSpeed;
+
+        sliderText.text = playbackSpeed.ToString("F2") + "X";
     }
 }
