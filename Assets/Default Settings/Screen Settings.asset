@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Screen Settings
   m_EditorClassIdentifier: 
   topOffset: 3
-  bottomOffset: 0
+  bottomOffset: 3
   rightOffset: 0
   leftOffset: 0
