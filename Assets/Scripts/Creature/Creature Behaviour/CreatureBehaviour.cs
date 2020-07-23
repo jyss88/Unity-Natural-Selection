@@ -23,7 +23,7 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
     public float Size { get { return size.Size; } }
     public Collider2D Target { get { return sense.Target; } }
 
-    private void Awake() {
+    void Awake() {
         state = new CreatureState();
         metabolism = new CreatureMetabolism(gameObject, settings.StartingEnergy);
 

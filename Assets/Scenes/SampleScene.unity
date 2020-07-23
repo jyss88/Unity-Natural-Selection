@@ -195,27 +195,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226501583}
   m_CullTransparentMesh: 0
---- !u!1 &378189718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 533086199359493560, guid: 22e6056d11f644e43ac629cb13d632d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1774958594}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &378189719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378189718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f96c9a90c7bde448acf0817d7bc7e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings: {fileID: 0}
-  foodPrefab: {fileID: 0}
-  sliderText: {fileID: 0}
 --- !u!1 &380980086
 GameObject:
   m_ObjectHideFlags: 0
