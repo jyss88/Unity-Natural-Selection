@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodSpawnBehaviour : MonoBehaviour, IFoodSpawn
 {
-    public FoodSpawnSettings settings;
-    public GameObject foodPrefab;
+    [SerializeField] private FoodSpawnSettings settings;
+    [SerializeField] private GameObject foodPrefab;
+    [SerializeField] private Text sliderText;
 
     private float spawnRate;
     private float nextSpawn = 0;
@@ -13,10 +15,12 @@ public class FoodSpawnBehaviour : MonoBehaviour, IFoodSpawn
     private void Awake() {
         spawnRate = settings.SpawnRate;
         NumSpawn = settings.NumSpawn;
+        sliderText.text = NumSpawn.ToString();
     }
 
     public void ChangeNumSpawn(float numSpawn) {
         NumSpawn = (int) numSpawn;
+        sliderText.text = NumSpawn.ToString();
     }
 
     public void Tick() {
@@ -36,4 +40,5 @@ public class FoodSpawnBehaviour : MonoBehaviour, IFoodSpawn
     {
         Tick();
     }
+
 }
