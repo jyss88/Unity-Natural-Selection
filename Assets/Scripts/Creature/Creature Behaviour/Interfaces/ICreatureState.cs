@@ -1,13 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum CState
-{
+﻿public enum CState {
     wander,
     hunt
 }
-public interface ICreatureState
-{    
+public interface ICreatureState {
     CState State { get; set; }
 }

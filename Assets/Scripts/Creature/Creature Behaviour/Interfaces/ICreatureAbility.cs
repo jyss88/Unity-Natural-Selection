@@ -1,4 +1,3 @@
-﻿public interface ICreatureAbility
-{
+﻿public interface ICreatureAbility {
     void Tick();
 }

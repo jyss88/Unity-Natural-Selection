@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-public interface ICreatureFactory : ICreatureAbility
-{
+public interface ICreatureFactory : ICreatureAbility {
     GameObject Reproduce();
 }

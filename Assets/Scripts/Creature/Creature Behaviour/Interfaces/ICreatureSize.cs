@@ -1,4 +1,3 @@
-﻿public interface ICreatureSize : ICreatureAbility
-{
+﻿public interface ICreatureSize : ICreatureAbility {
     float Size { get; }
 }
