@@ -2,8 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Stats Manager")]
-public class StatsManager : SingletonScriptableObject<StatsManager>
-{
+public class StatsManager : SingletonScriptableObject<StatsManager> {
     public List<Dictionary<CreatureStats.StatType, float>> CreatureValues { get; } = new List<Dictionary<CreatureStats.StatType, float>>();
 
     public void AddValue(Dictionary<CreatureStats.StatType, float> valueDict) {

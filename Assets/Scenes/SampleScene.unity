@@ -287,6 +287,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1289281023}
+        m_MethodName: StopCollection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &380980089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1576,7 @@ GameObject:
   - component: {fileID: 1289281019}
   - component: {fileID: 1289281021}
   - component: {fileID: 1289281022}
+  - component: {fileID: 1289281023}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1630,6 +1642,20 @@ MonoBehaviour:
   foodPrefab: {fileID: 5342374260590903304, guid: 715f46e8b25e4e34a918d19173931664,
     type: 3}
   sliderText: {fileID: 514646122}
+--- !u!114 &1289281023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289281018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7bdb577f3a7fc4080bd2912eb12a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pollingPeriod: 10
+  savePeriod: 30
 --- !u!1 &1357691166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1739,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289281021}
         m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1289281023}
+        m_MethodName: StartCollection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

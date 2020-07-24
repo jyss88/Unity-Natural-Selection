@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class FoodBehaviour : MonoBehaviour, IEdible
-{
+public class FoodBehaviour : MonoBehaviour, IEdible {
 #pragma warning disable 0649
     [SerializeField] private FoodSettings settings;
 #pragma warning restore 0649
@@ -17,8 +16,7 @@ public class FoodBehaviour : MonoBehaviour, IEdible
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Creature")){
-            Debug.Log("Collided with creature");
+        if (collision.gameObject.CompareTag("Creature")) {
             FeedTo(collision.gameObject.GetComponent<IEater>());
         }
     }

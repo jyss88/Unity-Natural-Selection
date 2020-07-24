@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScreenBounds")]
-public class ScreenBounds : SingletonScriptableObject<ScreenBounds>
-{
+public class ScreenBounds : SingletonScriptableObject<ScreenBounds> {
     [SerializeField] private float topOffset = 0;
     [SerializeField] private float bottomOffset = 0;
     [SerializeField] private float rightOffset = 0;
