@@ -4,6 +4,10 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
+/// <summary>
+/// Class handling creature stats collection
+/// Writes stats to .csv files
+/// </summary>
 public class StatsCollector : MonoBehaviour {
     [SerializeField] private float pollingPeriod = 10f;
     [SerializeField] private float savePeriod = 30f;
@@ -33,16 +37,26 @@ public class StatsCollector : MonoBehaviour {
         StartCoroutine(DataSaveLoop());
     }
 
+    /// <summary>
+    /// Starts data collections coroutine
+    /// </summary>
     public void StartCollection() {
         isCollecting = true;
         StartCoroutine(DataCollectLoop());
     }
 
+    /// <summary>
+    /// Stops data collection coroutine
+    /// </summary>
     public void StopCollection() {
         isCollecting = false;
         SaveFiles();
     }
 
+    /// <summary>
+    /// Data collection coroutine
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DataCollectLoop() {
         Debug.Log("Data collection started.");
         while (isCollecting) {
@@ -52,6 +66,10 @@ public class StatsCollector : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// File saving coroutine
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DataSaveLoop() {
         while(true) {
             SaveFiles();
@@ -115,6 +133,9 @@ public class StatsCollector : MonoBehaviour {
         // END PROTECTED REGION
     }
 
+    /// <summary>
+    /// Saves data buffers to csv fils
+    /// </summary>
     public void SaveFiles() {
         // Save data if we have data to save
         if (timeBuf.Count > 0) {
@@ -175,6 +196,9 @@ public class StatsCollector : MonoBehaviour {
         writer.WriteLine(string.Join(",", list));
     }
 
+    /// <summary>
+    /// Clears all files
+    /// </summary>
     private void ClearFiles() {
         // Write time and count data
         using (StreamWriter timeW = new StreamWriter(basePath + timePath + ".csv", append: false)) {
