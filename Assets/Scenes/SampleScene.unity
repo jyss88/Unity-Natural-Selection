@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pollingPeriod: 10
-  savePeriod: 30
+  savePeriod: 60
 --- !u!1 &1357691166
 GameObject:
   m_ObjectHideFlags: 0

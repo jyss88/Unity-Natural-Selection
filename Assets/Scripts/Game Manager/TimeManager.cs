@@ -47,8 +47,11 @@ public class TimeManager : MonoBehaviour
     public void ChangeSpeed(float newSpeed)
     {
         playbackSpeed = newSpeed;
-        Time.timeScale = newSpeed;
 
+        if (!IsPaused) { // Set timescale if playing
+            Time.timeScale = newSpeed;
+        }
+        
         sliderText.text = playbackSpeed.ToString("F2") + "X";
     }
 }
