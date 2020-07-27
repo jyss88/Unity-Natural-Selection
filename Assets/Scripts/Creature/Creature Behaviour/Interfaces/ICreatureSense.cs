@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public interface ICreatureSense : ICreatureAbility
-{
+public interface ICreatureSense : ICreatureAbility {
     float Radius { get; }
     Collider2D Target { get; }
 }

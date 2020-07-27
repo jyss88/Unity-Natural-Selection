@@ -1,4 +1,3 @@
-﻿public interface IEater
-{
+﻿public interface IEater {
     void Eat(float energy);
 }

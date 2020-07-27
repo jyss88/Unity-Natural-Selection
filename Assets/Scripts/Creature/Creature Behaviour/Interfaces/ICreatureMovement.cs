@@ -1,4 +1,3 @@
-﻿public interface ICreatureMovement : ICreatureAbility
-{
+﻿public interface ICreatureMovement : ICreatureAbility {
     float Velocity { get; }
 }

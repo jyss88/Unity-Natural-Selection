@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
-{
+/// <summary>
+/// Monobehaviour for creature
+/// </summary>
+public class CreatureBehaviour : MonoBehaviour, ICreature, IEater {
 #pragma warning disable 0649
     [SerializeField] private CreatureSettings settings;
     [SerializeField] private AbilitySettings velocitySettings;
@@ -16,14 +18,14 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
     private ICreatureSize size;
     private ICreatureFactory creatureFactory;
 
-    public float Energy { get { return metabolism.Energy;} }
+    public float Energy { get { return metabolism.Energy; } }
     public float StartingEnergy { get { return metabolism.StartingEnergy; } }
     public float Velocity { get { return movement.Velocity; } }
     public float SenseRadius { get { return sense.Radius; } }
     public float Size { get { return size.Size; } }
     public Collider2D Target { get { return sense.Target; } }
 
-    private void Awake() {
+    void Awake() {
         state = new CreatureState();
         metabolism = new CreatureMetabolism(gameObject, settings.StartingEnergy);
 
@@ -34,8 +36,7 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         movement.Tick();
         metabolism.Tick();
         sense.Tick();
@@ -43,19 +44,33 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater
         creatureFactory.Tick();
     }
 
+    /// <summary>
+    /// Adds energy to creature
+    /// </summary>
+    /// <param name="energy"></param>
     public void Eat(float energy) {
         metabolism.AddEnergy(energy);
     }
 
+    /// <summary>
+    /// Mutates attribute value
+    /// Returns attribute +- delta mutate
+    /// </summary>
+    /// <param name="attr">value of attribute</param>
+    /// <returns>Mutated attribute value</returns>
     private float MutateAttribute(float attr) {
         return Mathf.Abs(attr + Random.Range(-settings.DeltaMutate, settings.DeltaMutate));
     }
 
-    public void Mutate(ICreature source) {
-        float newStartingEnergy = MutateAttribute(source.StartingEnergy);
-        float newSize = Mathf.Clamp(MutateAttribute(source.Size), 0.1f, 1000f);
-        float newVelocity = MutateAttribute(source.Velocity);
-        float newSenseRadius = MutateAttribute(source.SenseRadius);
+    /// <summary>
+    /// Mutates creature attributes, based on parent creature attributes
+    /// </summary>
+    /// <param name="parent">parent creature</param>
+    public void Mutate(ICreature parent) {
+        float newStartingEnergy = MutateAttribute(parent.StartingEnergy);
+        float newSize = Mathf.Clamp(MutateAttribute(parent.Size), 0.1f, 1000f);
+        float newVelocity = MutateAttribute(parent.Velocity);
+        float newSenseRadius = MutateAttribute(parent.SenseRadius);
 
         metabolism = new CreatureMetabolism(gameObject, newStartingEnergy);
         size = new CreatureSize(sizeSettings, newSize, metabolism, transform);

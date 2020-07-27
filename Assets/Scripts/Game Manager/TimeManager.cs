@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeManager : MonoBehaviour
-{
+/// <summary>
+/// Class handling simulation time
+/// </summary>
+public class TimeManager : MonoBehaviour {
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button playButton;
     [SerializeField] private Text sliderText;
@@ -14,15 +14,16 @@ public class TimeManager : MonoBehaviour
     public static bool IsPaused { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Pause();
         pauseButton.interactable = false;
         playButton.interactable = true;
     }
 
-    public void Pause()
-    {
+    /// <summary>
+    /// Pauses simulation
+    /// </summary>
+    public void Pause() {
         Time.timeScale = 0f;
         IsPaused = true;
 
@@ -33,8 +34,10 @@ public class TimeManager : MonoBehaviour
         Debug.Log("Game Paused");
     }
 
-    public void Resume()
-    {
+    /// <summary>
+    /// Resumes simulation
+    /// </summary>
+    public void Resume() {
         Time.timeScale = playbackSpeed;
         IsPaused = false;
 
@@ -44,10 +47,16 @@ public class TimeManager : MonoBehaviour
         Debug.Log("Game resumed");
     }
 
-    public void ChangeSpeed(float newSpeed)
-    {
+    /// <summary>
+    /// Changes playback speed
+    /// </summary>
+    /// <param name="newSpeed">New speed value</param>
+    public void ChangeSpeed(float newSpeed) {
         playbackSpeed = newSpeed;
-        Time.timeScale = newSpeed;
+
+        if (!IsPaused) { // Set timescale if playing
+            Time.timeScale = newSpeed;
+        }
 
         sliderText.text = playbackSpeed.ToString("F2") + "X";
     }

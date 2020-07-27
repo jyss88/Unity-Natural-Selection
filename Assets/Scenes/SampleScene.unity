@@ -195,27 +195,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226501583}
   m_CullTransparentMesh: 0
---- !u!1 &378189718 stripped
+--- !u!1 &363303475
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 533086199359493560, guid: 22e6056d11f644e43ac629cb13d632d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1774958594}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &378189719
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363303476}
+  - component: {fileID: 363303478}
+  - component: {fileID: 363303477}
+  - component: {fileID: 363303479}
+  m_Layer: 5
+  m_Name: Timer Display
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &363303476
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363303475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1682538432}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 168.4, y: 38.5}
+  m_SizeDelta: {x: 75, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &363303477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378189718}
+  m_GameObject: {fileID: 363303475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f96c9a90c7bde448acf0817d7bc7e0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 0}
-  foodPrefab: {fileID: 0}
-  sliderText: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 00:00
+--- !u!222 &363303478
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363303475}
+  m_CullTransparentMesh: 0
+--- !u!114 &363303479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363303475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b500aee6e389a46a70760b0b8762db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerLabel: {fileID: 363303477}
 --- !u!1 &380980086
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +370,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289281021}
         m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1289281023}
+        m_MethodName: StopCollection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -907,12 +989,12 @@ RectTransform:
   - {fileID: 514646121}
   - {fileID: 1769383391}
   m_Father: {fileID: 1682538432}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 38}
-  m_SizeDelta: {x: 100, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 394.3, y: 38}
+  m_SizeDelta: {x: 75, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716678689
 MonoBehaviour:
@@ -1586,6 +1668,7 @@ GameObject:
   - component: {fileID: 1289281019}
   - component: {fileID: 1289281021}
   - component: {fileID: 1289281022}
+  - component: {fileID: 1289281023}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1651,6 +1734,20 @@ MonoBehaviour:
   foodPrefab: {fileID: 5342374260590903304, guid: 715f46e8b25e4e34a918d19173931664,
     type: 3}
   sliderText: {fileID: 514646122}
+--- !u!114 &1289281023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289281018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7bdb577f3a7fc4080bd2912eb12a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pollingPeriod: 10
+  savePeriod: 60
 --- !u!1 &1357691166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,6 +1831,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289281021}
         m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1289281023}
+        m_MethodName: StartCollection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2196,8 +2304,9 @@ RectTransform:
   - {fileID: 1357691167}
   - {fileID: 380980087}
   - {fileID: 1850941654}
-  - {fileID: 1786408843}
   - {fileID: 716678688}
+  - {fileID: 1786408843}
+  - {fileID: 363303476}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2402,7 +2511,7 @@ GameObject:
   - component: {fileID: 1786408845}
   - component: {fileID: 1786408844}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Creature Count Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2420,7 +2529,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1682538432}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2590,8 +2699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 181.5, y: 38}
-  m_SizeDelta: {x: 115, y: 20}
+  m_AnchoredPosition: {x: 256.7, y: 38}
+  m_SizeDelta: {x: 75, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850941655
 MonoBehaviour:
