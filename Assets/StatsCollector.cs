@@ -181,8 +181,8 @@ public class StatsCollector : MonoBehaviour {
     private List<float> GetStatsOfType(StatType statType) {
         List<float> output = new List<float>();
 
-        foreach (Dictionary<StatType, float> creatureValues in StatsManager.Instance.CreatureValues) {
-            output.Add(creatureValues[statType]);
+        foreach (var creatureValues in StatsManager.Instance.CreatureValues) {
+            output.Add(creatureValues.Value[statType]);
         }
 
         return output;

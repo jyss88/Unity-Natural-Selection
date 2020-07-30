@@ -26,11 +26,11 @@ public class AvgStatsTextBehaviour : MonoBehaviour
         statText.text = "Avg " + SplitString(statType.ToString()) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
     }
 
-    float GetAvg(List<Dictionary<StatType, float>> creatureList) {
+    float GetAvg(Dictionary<ICreature, Dictionary<StatType, float>> creatureList) {
         float total = 0;
 
         foreach (var creature in creatureList) {
-            total += creature[statType];
+            total += creature.Value[statType];
         }
 
         return total / creatureList.Count;

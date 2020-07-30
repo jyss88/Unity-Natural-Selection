@@ -15,10 +15,10 @@ public class CreatureStats : MonoBehaviour {
         Values[StatType.Velocity] = creature.Velocity;
         Values[StatType.SenseRadius] = creature.SenseRadius;
 
-        StatsManager.Instance.AddValue(Values);
+        StatsManager.Instance.CreatureValues.Add(creature, Values);
     }
 
     private void OnDestroy() {
-        StatsManager.Instance.RemoveValue(Values);
+        StatsManager.Instance.CreatureValues.Remove(creature);
     }
 }
