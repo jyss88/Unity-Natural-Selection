@@ -3,13 +3,19 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Stats Manager")]
 public class StatsManager : SingletonScriptableObject<StatsManager> {
-    public List<Dictionary<CreatureStats.StatType, float>> CreatureValues { get; } = new List<Dictionary<CreatureStats.StatType, float>>();
+    public enum StatType {
+        StartingEnergy,
+        Size,
+        Velocity,
+        SenseRadius,
+    }
+    public List<Dictionary<StatType, float>> CreatureValues { get; } = new List<Dictionary<StatType, float>>();
 
-    public void AddValue(Dictionary<CreatureStats.StatType, float> valueDict) {
+    public void AddValue(Dictionary<StatType, float> valueDict) {
         CreatureValues.Add(valueDict);
     }
 
-    public void RemoveValue(Dictionary<CreatureStats.StatType, float> valueDict) {
+    public void RemoveValue(Dictionary<StatType, float> valueDict) {
         CreatureValues.Remove(valueDict);
     }
 }

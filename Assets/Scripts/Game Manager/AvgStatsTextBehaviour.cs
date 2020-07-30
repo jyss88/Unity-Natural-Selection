@@ -2,10 +2,11 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using static StatsManager;
 
-public class StatsTextBehaviour : MonoBehaviour
+public class AvgStatsTextBehaviour : MonoBehaviour
 {
-    [SerializeField] private CreatureStats.StatType statType;
+    [SerializeField] private StatType statType;
 
     private Text statText;
 
@@ -25,7 +26,7 @@ public class StatsTextBehaviour : MonoBehaviour
         statText.text = "Avg " + SplitString(statType.ToString()) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
     }
 
-    float GetAvg(List<Dictionary<CreatureStats.StatType, float>> creatureList) {
+    float GetAvg(List<Dictionary<StatType, float>> creatureList) {
         float total = 0;
 
         foreach (var creature in creatureList) {

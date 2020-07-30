@@ -1,13 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using static StatsManager;
 
 public class CreatureStats : MonoBehaviour {
-    public enum StatType {
-        StartingEnergy,
-        Size,
-        Velocity,
-        SenseRadius,
-    }
 
     private ICreature creature;
 
