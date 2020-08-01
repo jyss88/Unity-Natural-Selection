@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using static StatsManager;
 
-public class AvgStatsTextBehaviour : MonoBehaviour
-{
+public class AvgStatsTextBehaviour : MonoBehaviour {
     [SerializeField] private StatType statType;
 
     private Text statText;
 
-    private void OnValidate()
-    {
+    private void OnValidate() {
         statText = GetComponent<Text>();
-        statText.text = "Avg " + SplitString(statType.ToString()) + ": 0.00";
+        statText.text = "Avg " + Stat2Str(statType) + ": 0.00";
     }
 
     private void Awake() {
@@ -21,9 +19,8 @@ public class AvgStatsTextBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        statText.text = "Avg " + SplitString(statType.ToString()) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
+    void Update() {
+        statText.text = "Avg " + Stat2Str(statType) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
     }
 
     float GetAvg(Dictionary<ICreature, Dictionary<StatType, float>> creatureList) {
@@ -34,10 +31,5 @@ public class AvgStatsTextBehaviour : MonoBehaviour
         }
 
         return total / creatureList.Count;
-    }
-
-    private string SplitString(string str)
-    {
-        return string.Join(" ", Regex.Split(str, @"(?<!^)(?=[A-Z](?![A-Z]|$))"));
     }
 }

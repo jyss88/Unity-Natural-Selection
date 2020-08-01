@@ -2,16 +2,17 @@
 using UnityEngine.UI;
 using static StatsManager;
 
-public class CreatureStatDisplayBehaviour : MonoBehaviour {
+public class CreatureStatDisplayBehaviour : MonoBehaviour, Observer {
     [SerializeField] private StatType statType;
 
     private Text text;
     private InputField inputField;
     private CreatureInfoPanelBehaviour panel;
+    private ICreature creature;
 
     private void OnValidate() {
         text = GetComponent<Text>();
-        text.text = statType.ToString();
+        text.text = Stat2Str(statType) + ":";
     }
 
     private void Awake() {
@@ -19,11 +20,15 @@ public class CreatureStatDisplayBehaviour : MonoBehaviour {
         inputField = GetComponentInChildren<InputField>();
         panel = GetComponentInParent<CreatureInfoPanelBehaviour>();
 
-        //inputField.enabled = false;
+        inputField.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update() {
-        
+    public void OnNotify() {
+        Debug.Log("Creature stat display updated");
+        creature = panel.Creature;
+
+        if (creature != null) {
+            inputField.text = StatsManager.Instance.CreatureValues[creature][statType].ToString("F2");
+        }
     }
 }

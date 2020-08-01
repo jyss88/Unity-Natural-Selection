@@ -1,22 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CreatureInfoPanelBehaviour : MonoBehaviour
-{
-    public CreatureBehaviour Creature { get; set; }
+public class CreatureInfoPanelBehaviour : MonoBehaviour {
+    public ICreature Creature { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private Subject panelSubject = new Subject();
+
+    private void Awake() {
+        EventSystem.current.SetSelectedGameObject(gameObject);
+
+        foreach (Observer observer in GetComponentsInChildren<Observer>()) {
+            panelSubject.AddObserver(observer);
+        }
+    }
+
+    private void OnEnable() {
+        panelSubject.Notify();
+    }
+
+    private void OnDisable() {
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (Creature != null) {
-            
-        } else if(gameObject.activeSelf) {
+
+        } else if (gameObject.activeSelf) {
             gameObject.SetActive(false);
         }
+    }
+
+    public void NotifySubject() {
+        panelSubject.Notify();
     }
 }
