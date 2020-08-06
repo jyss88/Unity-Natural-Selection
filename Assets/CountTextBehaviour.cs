@@ -2,11 +2,13 @@
 using UnityEngine.UI;
 
 public class CountTextBehaviour : MonoBehaviour {
+    private InputField inputField;
     private Text countText;
 
     private void OnValidate() {
         countText = GetComponent<Text>();
-        countText.text = "# Creatures: 10";
+        inputField = GetComponentInChildren<InputField>();
+        countText.text = "No Creatures";
     }
 
     private void Awake() {
@@ -15,6 +17,6 @@ public class CountTextBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        countText.text = "# Creatures: " + StatsManager.Instance.CreatureValues.Count.ToString();
+        inputField.text = StatsManager.Instance.CreatureValues.Count.ToString();
     }
 }

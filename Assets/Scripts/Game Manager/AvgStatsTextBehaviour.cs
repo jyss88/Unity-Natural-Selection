@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using static StatsManager;
 
 public class AvgStatsTextBehaviour : MonoBehaviour {
     [SerializeField] private StatType statType;
-
+    
+    private InputField inputField;
     private Text statText;
 
     private void OnValidate() {
         statText = GetComponent<Text>();
-        statText.text = "Avg " + Stat2Str(statType) + ": 0.00";
+        inputField = GetComponentInChildren<InputField>();
+        statText.text = "Avg " + Stat2Str(statType);
     }
 
     private void Awake() {
@@ -20,7 +21,7 @@ public class AvgStatsTextBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        statText.text = "Avg " + Stat2Str(statType) + ": " + GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
+        inputField.text = GetAvg(StatsManager.Instance.CreatureValues).ToString("F2");
     }
 
     float GetAvg(Dictionary<ICreature, Dictionary<StatType, float>> creatureList) {
