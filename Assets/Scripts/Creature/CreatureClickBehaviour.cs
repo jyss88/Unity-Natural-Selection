@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class CreatureClickBehaviour : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private GameObject panel;
+    [SerializeField] private KeyCode closeKey = KeyCode.Escape;
+
     private CreatureInfoPanelBehaviour panelBehaviour;
     private ICreature creature;
 
@@ -18,5 +19,23 @@ public class CreatureClickBehaviour : MonoBehaviour, IPointerClickHandler {
     void Awake() {
         creature = GetComponent<ICreature>();
         panelBehaviour = panel.GetComponent<CreatureInfoPanelBehaviour>();
+    }
+
+    private void Update() {
+        CheckDeselect();
+        panel.GetComponent<CreatureInfoPanelBehaviour>().NotifySubject();
+    }
+
+    public void CheckDeselect() {
+        if(Input.GetKey(closeKey) && panel.activeSelf) {
+            panel.SetActive(false);
+        }
+    }
+
+    public void OnDestroy() {
+        if(panelBehaviour.Creature == creature) {
+            panelBehaviour.Creature = null;
+            panel.SetActive(false);
+        }        
     }
 }

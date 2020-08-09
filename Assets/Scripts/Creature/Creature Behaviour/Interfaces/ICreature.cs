@@ -7,5 +7,7 @@ public interface ICreature {
     float Velocity { get; }
     float SenseRadius { get; }
     float Size { get; }
+
+    int Generation { get; }
     void Mutate(ICreature parent);
 }

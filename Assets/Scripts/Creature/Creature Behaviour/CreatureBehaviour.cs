@@ -4,12 +4,10 @@
 /// Monobehaviour for creature
 /// </summary>
 public class CreatureBehaviour : MonoBehaviour, ICreature, IEater {
-#pragma warning disable 0649
     [SerializeField] private CreatureSettings settings;
     [SerializeField] private AbilitySettings velocitySettings;
     [SerializeField] private AbilitySettings senseSettings;
     [SerializeField] private AbilitySettings sizeSettings;
-#pragma warning restore 0649
 
     private ICreatureState state;
     private ICreatureMetabolism metabolism;
@@ -23,6 +21,7 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater {
     public float Velocity { get { return movement.Velocity; } }
     public float SenseRadius { get { return sense.Radius; } }
     public float Size { get { return size.Size; } }
+    public int Generation { get; private set; } = 1;
     public Collider2D Target { get { return sense.Target; } }
 
     void Awake() {
@@ -77,5 +76,7 @@ public class CreatureBehaviour : MonoBehaviour, ICreature, IEater {
         sense = new CreatureSense(senseSettings, newSenseRadius, state, metabolism, transform);
         movement = new CreatureMovement(velocitySettings, newVelocity, state, metabolism, sense, transform);
         creatureFactory = new CreatureFactory(gameObject, this, metabolism, transform, newSize);
+
+        Generation = parent.Generation + 1;
     }
 }
